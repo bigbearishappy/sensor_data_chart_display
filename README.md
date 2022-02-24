@@ -1,5 +1,7 @@
 # sensor_data_chart_display
 ---
+ ![image]( https://github.com/bigbearishappy/sensor_data_chart_display/blob/main/pic/demo.gif)
+---
 ## Description
 
 This is a python app which can get the data from the **STHS34PF80** sensor
