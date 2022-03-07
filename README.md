@@ -11,8 +11,11 @@ and display the line chart in real time.
 
 ## How to use it
 ### 1 software install
+```
 sudo apt-get install python3-matplotlib
-
 sudo apt-get install libatlas-base-dev
+```
 ### 2 run the code
+```
 python main.py
+```
