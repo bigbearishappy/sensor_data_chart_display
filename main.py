@@ -11,6 +11,8 @@ ax = list(range(count))  #save the data of pic 1
 ay = [0] * 100
 num = count  # count
 
+last_data = 0
+
 # init the sensor
 os.system('i2ctransfer -y 1 w1@0x5a 0x0f r1')
 
@@ -65,8 +67,13 @@ while True:
     TempPresence_l=subprocess.check_output("i2ctransfer -y 1 w1@0x5a 0x3a r1", shell=True)
     TempPresence_h=subprocess.check_output("i2ctransfer -y 1 w1@0x5a 0x3b r1", shell=True)
     TempPresence=int(TempPresence_l, 16) + int(TempPresence_h, 16) * 156
+    if TempPresence > 10000:
+        TempPresence = last_data
+        print('big than')
+    last_data = TempPresence
     time.sleep(0.126)
 
+    print(TempPresence)
     g1 = TempPresence
     # pic 1
     ax.append(num)  # display the data of x axis 
