@@ -49,7 +49,8 @@ os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x32')
 os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
 os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
 
-os.system('i2ctransfer -y 1 w2@0x5a 0x20 0x06')
+os.system('i2ctransfer -y 1 w2@0x5a 0x10 0x02')
+os.system('i2ctransfer -y 1 w2@0x5a 0x20 0x07')
 
 # display the data
 plt.ion()  #Open a drawing window to enter interactive mode for updating data in real time 
