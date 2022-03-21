@@ -17,5 +17,5 @@ sudo apt-get install libatlas-base-dev
 ```
 ### 2 run the code
 ```
-python main.py
+python3 main.py
 ```
