@@ -14,45 +14,52 @@ num = count  # count
 last_data = 0
 
 # init the sensor
-os.system('i2ctransfer -y 1 w1@0x5a 0x0f r1')
+#os.system('i2ctransfer -y 1 w1@0x5a 0x0f r1')
+#
+#os.system('i2ctransfer -y 1 w2@0x5a 0x20 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x80')
+#
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x2a')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x01')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x10 0x03')
+#
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x20')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x09 0xc8')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
+#
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x22')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x09 0xc8')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
 
-os.system('i2ctransfer -y 1 w2@0x5a 0x20 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x80')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x26')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x32')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x32')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
+#
+#os.system('i2ctransfer -y 1 w2@0x5a 0x10 0x02')
+#os.system('i2ctransfer -y 1 w2@0x5a 0x20 0x07')
 
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
-os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x2a')
-os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x01')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x10 0x03')
-
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
-os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x20')
-os.system('i2ctransfer -y 1 w2@0x5a 0x09 0xc8')
-os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
-
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
-os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x22')
-os.system('i2ctransfer -y 1 w2@0x5a 0x09 0xc8')
-os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
-
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x10')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x40')
-os.system('i2ctransfer -y 1 w2@0x5a 0x08 0x26')
-os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x32')
-os.system('i2ctransfer -y 1 w2@0x5a 0x09 0x32')
-os.system('i2ctransfer -y 1 w2@0x5a 0x11 0x00')
-os.system('i2ctransfer -y 1 w2@0x5a 0x21 0x00')
-
-os.system('i2ctransfer -y 1 w2@0x5a 0x10 0x02')
-os.system('i2ctransfer -y 1 w2@0x5a 0x20 0x07')
+os.system('i2ctransfer -y 3 w2@0x5a 0x0c 0x04')
+os.system('i2ctransfer -y 3 w2@0x5a 0x0d 0x22')
+os.system('i2ctransfer -y 3 w2@0x5a 0x10 0x02')
+os.system('i2ctransfer -y 3 w2@0x5a 0x20 0x08')
+os.system('i2ctransfer -y 3 w2@0x5a 0x21 0x00')
+os.system('i2ctransfer -y 3 w2@0x5a 0x22 0x00')
 
 # display the data
 plt.ion()  #Open a drawing window to enter interactive mode for updating data in real time 
@@ -64,10 +71,10 @@ while True:
     plt.clf()  #Clear the chart before refresh to prevent excessive data consumption from consuming memory
     plt.suptitle("TOP Title", fontsize=30)  # add the top title and config it's font size
 
-    TempPresence_l=subprocess.check_output("i2ctransfer -y 1 w1@0x5a 0x3a r1", shell=True)
-    TempPresence_h=subprocess.check_output("i2ctransfer -y 1 w1@0x5a 0x3b r1", shell=True)
+    TempPresence_l=subprocess.check_output("i2ctransfer -y 3 w1@0x5a 0x3a r1", shell=True)
+    TempPresence_h=subprocess.check_output("i2ctransfer -y 3 w1@0x5a 0x3b r1", shell=True)
     TempPresence=int(TempPresence_l, 16) + int(TempPresence_h, 16) * 156
-    if TempPresence > 10000:
+    if TempPresence > 30000:
         TempPresence = last_data
         print('big than')
     last_data = TempPresence
