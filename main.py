@@ -61,6 +61,11 @@ os.system('i2ctransfer -y 3 w2@0x5a 0x20 0x08')
 os.system('i2ctransfer -y 3 w2@0x5a 0x21 0x00')
 os.system('i2ctransfer -y 3 w2@0x5a 0x22 0x00')
 
+def get_sign16(vx):
+    if not vx or vx < 0x8000:
+        return vx
+    return vx - 0x10000
+
 # display the data
 plt.ion()  #Open a drawing window to enter interactive mode for updating data in real time 
 plt.rcParams['figure.figsize'] = (10, 5)  # configure the display size
@@ -74,10 +79,7 @@ while True:
     TempPresence_l=subprocess.check_output("i2ctransfer -y 3 w1@0x5a 0x3a r1", shell=True)
     TempPresence_h=subprocess.check_output("i2ctransfer -y 3 w1@0x5a 0x3b r1", shell=True)
     TempPresence=int(TempPresence_l, 16) + int(TempPresence_h, 16) * 156
-    if TempPresence > 30000:
-        TempPresence = last_data
-        print('big than')
-    last_data = TempPresence
+    TempPresence=get_sign16(TempPresence)
     time.sleep(0.126)
 
     print(TempPresence)
