@@ -45,27 +45,44 @@ i2ctransfer -y 3 w2@0x5a 0x20 0x08
 i2ctransfer -y 3 w2@0x5a 0x21 0x00
 i2ctransfer -y 3 w2@0x5a 0x22 0x00
 
+function unsigned16_to_signed()
+{
+temp=0
+if (( $1 >= 0x8000));then
+temp=$(($1-0x10000))
+else
+temp=$1
+fi
+echo $temp
+}
 
 for((;;))
 do
 TempObject_l=`i2ctransfer -y 3 w1@0x5a 0x26 r1`
 TempObject_h=`i2ctransfer -y 3 w1@0x5a 0x27 r1`
 TempObject=$(((TempObject_h*256+TempObject_l)/2000))
+TempObject=`unsigned16_to_signed $TempObject`
 #echo TempObject=$TempObject
+
 TempAmbient_l=`i2ctransfer -y 3 w1@0x5a 0x28 r1`
 TempAmbient_h=`i2ctransfer -y 3 w1@0x5a 0x29 r1`
 TempAmbient=$(((TempAmbient_h*256+TempAmbient_l)/100))
+TempAmbient=`unsigned16_to_signed $TempAmbient`
 #echo TempAmbient=$TempAmbient
+
 TempPresence_l=`i2ctransfer -y 3 w1@0x5a 0x3a r1`
 TempPresence_h=`i2ctransfer -y 3 w1@0x5a 0x3b r1`
 TempPresence=$((TempPresence_h*256+TempPresence_l))
+TempPresence=`unsigned16_to_signed $TempPresence`
 #echo TempPresence=$TempPresence
+
 TempMotion_l=`i2ctransfer -y 3 w1@0x5a 0x3c r1`
 TempMotion_h=`i2ctransfer -y 3 w1@0x5a 0x3d r1`
 TempMotion=$((TempMotion_h*256+TempMotion_l))
-detect=`i2ctransfer -y 3 w1@0x5a 0x25 r1`
+TempMotion=`unsigned16_to_signed $TempMotion`
 #echo TempMotion=$TempMotion
+
+detect=`i2ctransfer -y 3 w1@0x5a 0x25 r1`
 printf 'TempObject=%i\t TempAmbient=%i\t TempPresence=%i\t TempMotion=%i\t detect=%i\n' $TempObject $TempAmbient $TempPresence $TempMotion $detect
-#sleep 0.126 
 sleep 0.126 
 done
