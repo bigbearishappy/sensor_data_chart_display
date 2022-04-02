@@ -19,3 +19,7 @@ sudo apt-get install libatlas-base-dev
 ```
 python3 main.py
 ```
+PS:if you want to use it on reterminal's LCD, you can install the thonny
+```
+python3-thonny
+```
