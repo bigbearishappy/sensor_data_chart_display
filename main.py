@@ -78,7 +78,7 @@ while True:
 
     TempPresence_l=subprocess.check_output("i2ctransfer -y 3 w1@0x5a 0x3a r1", shell=True)
     TempPresence_h=subprocess.check_output("i2ctransfer -y 3 w1@0x5a 0x3b r1", shell=True)
-    TempPresence=int(TempPresence_l, 16) + int(TempPresence_h, 16) * 156
+    TempPresence=int(TempPresence_l, 16) + int(TempPresence_h, 16) * 256
     TempPresence=get_sign16(TempPresence)
     time.sleep(0.126)
 
