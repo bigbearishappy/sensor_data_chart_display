@@ -45,6 +45,14 @@ i2ctransfer -y 3 w2@0x5a 0x20 0x08
 i2ctransfer -y 3 w2@0x5a 0x21 0x00
 i2ctransfer -y 3 w2@0x5a 0x22 0x00
 
+reg_0c=`i2ctransfer -y 3 w1@0x5a 0x0c r1`
+reg_0d=`i2ctransfer -y 3 w1@0x5a 0x0d r1`
+reg_10=`i2ctransfer -y 3 w1@0x5a 0x10 r1`
+reg_20=`i2ctransfer -y 3 w1@0x5a 0x20 r1`
+reg_21=`i2ctransfer -y 3 w1@0x5a 0x21 r1`
+reg_22=`i2ctransfer -y 3 w1@0x5a 0x22 r1`
+printf 'reg0x0c:0x%x reg0x0d:0x%x reg0x10:0x%x reg0x20:0x%x reg0x21:0x%x reg0x22:0x%x\n' $reg_0c $reg_0d $reg_10 $reg_20 $reg_21 $reg_22
+
 function unsigned16_to_signed()
 {
 temp=0
@@ -58,26 +66,27 @@ echo $temp
 
 for((;;))
 do
-TempObject_l=`i2ctransfer -y 3 w1@0x5a 0x26 r1`
-TempObject_h=`i2ctransfer -y 3 w1@0x5a 0x27 r1`
-TempObject=$(((TempObject_h*256+TempObject_l)/2000))
-TempObject=`unsigned16_to_signed $TempObject`
+reg_26_r4=`i2ctransfer -y 3 w1@0x5a 0x26 r4`
+TempObject_l=${reg_26_r4: 0: 4}
+TempObject_h=${reg_26_r4: 5: 4}
+TempObject=$(((TempObject_h*256+TempObject_l)))
 #echo TempObject=$TempObject
 
-TempAmbient_l=`i2ctransfer -y 3 w1@0x5a 0x28 r1`
-TempAmbient_h=`i2ctransfer -y 3 w1@0x5a 0x29 r1`
+TempAmbient_l=${reg_26_r4: 10: 4}
+TempAmbient_h=${reg_26_r4: 15: 4}
 TempAmbient=$(((TempAmbient_h*256+TempAmbient_l)/100))
-TempAmbient=`unsigned16_to_signed $TempAmbient`
+#TempAmbient=`unsigned16_to_signed $TempAmbient`
 #echo TempAmbient=$TempAmbient
 
-TempPresence_l=`i2ctransfer -y 3 w1@0x5a 0x3a r1`
-TempPresence_h=`i2ctransfer -y 3 w1@0x5a 0x3b r1`
+reg_3a_r4=`i2ctransfer -y 3 w1@0x5a 0x3a r4`
+TempPresence_l=${reg_3a_r4: 0: 4}
+TempPresence_h=${reg_3a_r4: 5: 4}
 TempPresence=$((TempPresence_h*256+TempPresence_l))
 TempPresence=`unsigned16_to_signed $TempPresence`
 #echo TempPresence=$TempPresence
 
-TempMotion_l=`i2ctransfer -y 3 w1@0x5a 0x3c r1`
-TempMotion_h=`i2ctransfer -y 3 w1@0x5a 0x3d r1`
+TempMotion_l=${reg_3a_r4: 10: 4}
+TempMotion_h=${reg_3a_r4: 15: 4}
 TempMotion=$((TempMotion_h*256+TempMotion_l))
 TempMotion=`unsigned16_to_signed $TempMotion`
 #echo TempMotion=$TempMotion
